@@ -134,13 +134,17 @@ class JavaGenerator(spec: Spec) extends Generator(spec) {
       refs.java.add("java.util.concurrent.atomic.AtomicBoolean")
     }
 
+    val isPureInterface = !i.ext.cpp && i.methods.filter(_.static).isEmpty
+    val interfaceDeclarationType = if(isPureInterface) "interface" else "abstract class"
+    val methodDeclarationPublicPrefix = if(isPureInterface) "" else "public abstract "
+
     writeJavaFile(ident, origin, refs.java, w => {
       val javaClass = marshal.typename(ident, i)
       val typeParamList = javaTypeParams(typeParams)
       writeDoc(w, doc)
 
       javaAnnotationHeader.foreach(w.wl)
-      w.w(s"${javaClassAccessModifierString}abstract class $javaClass$typeParamList").braced {
+      w.w(s"${javaClassAccessModifierString}${interfaceDeclarationType} $javaClass$typeParamList").braced {
         val skipFirst = SkipFirst()
         generateJavaConstants(w, i.consts)
 
@@ -154,7 +158,7 @@ class JavaGenerator(spec: Spec) extends Generator(spec) {
             nullityAnnotation + marshal.paramType(p.ty) + " " + idJava.local(p.ident)
           })
           marshal.nullityAnnotation(m.ret).foreach(w.wl)
-          w.wl("public abstract " + ret + " " + idJava.method(m.ident) + params.mkString("(", ", ", ")") + throwException + ";")
+          w.wl(methodDeclarationPublicPrefix + ret + " " + idJava.method(m.ident) + params.mkString("(", ", ", ")") + throwException + ";")
         }
         for (m <- i.methods if m.static) {
           skipFirst { w.wl }
