@@ -593,7 +593,9 @@ void jniDefaultSetPendingFromCurrentImpl(JNIEnv * env) {
         e.set_as_pending(env);
         return;
     } catch (const std::exception & e) {
-        env->ThrowNew(env->FindClass("java/lang/RuntimeException"), e.what());
+        env->ThrowNew(env->FindClass(“java/lang/RuntimeException”), e.what());
+    } catch(...) {
+        std::terminate();
     }
 }
 
