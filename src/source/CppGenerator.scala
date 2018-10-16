@@ -101,7 +101,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
         wrapNamespace(w, "std",
           (w: IndentWriter) => {
             w.wl("template <>")
-            w.w(s"struct hash<$fqSelf>").bracedSemi {
+            w.w(s"struct PROJECT_EXPORT hash<$fqSelf>").bracedSemi {
               w.w(s"size_t operator()($fqSelf type) const").braced {
                 w.wl(s"return std::hash<$underlyingType>()(static_cast<$underlyingType>(type));")
               }
@@ -202,7 +202,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
     // C++ Header
     def writeCppPrototype(w: IndentWriter) {
       if (r.ext.cpp) {
-        w.w(s"struct $self; // Requiring extended class")
+        w.w(s"struct PROJECT_EXPORT $self; // Requiring extended class")
         w.wl
         w.wl
       }
