@@ -218,18 +218,18 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
 
         if (r.derivingTypes.contains(DerivingType.Eq)) {
           w.wl
-          w.wl(s"friend bool operator==(const $actualSelf& lhs, const $actualSelf& rhs);")
-          w.wl(s"friend bool operator!=(const $actualSelf& lhs, const $actualSelf& rhs);")
+          w.wl(s"PROJECT_EXPORT friend bool operator==(const $actualSelf& lhs, const $actualSelf& rhs);")
+          w.wl(s"PROJECT_EXPORT friend bool operator!=(const $actualSelf& lhs, const $actualSelf& rhs);")
         }
         if (r.derivingTypes.contains(DerivingType.Ord)) {
           w.wl
-          w.wl(s"friend bool operator<(const $actualSelf& lhs, const $actualSelf& rhs);")
-          w.wl(s"friend bool operator>(const $actualSelf& lhs, const $actualSelf& rhs);")
+          w.wl(s"PROJECT_EXPORT friend bool operator<(const $actualSelf& lhs, const $actualSelf& rhs);")
+          w.wl(s"PROJECT_EXPORT friend bool operator>(const $actualSelf& lhs, const $actualSelf& rhs);")
         }
         if (r.derivingTypes.contains(DerivingType.Eq) && r.derivingTypes.contains(DerivingType.Ord)) {
           w.wl
-          w.wl(s"friend bool operator<=(const $actualSelf& lhs, const $actualSelf& rhs);")
-          w.wl(s"friend bool operator>=(const $actualSelf& lhs, const $actualSelf& rhs);")
+          w.wl(s"PROJECT_EXPORT friend bool operator<=(const $actualSelf& lhs, const $actualSelf& rhs);")
+          w.wl(s"PROJECT_EXPORT friend bool operator>=(const $actualSelf& lhs, const $actualSelf& rhs);")
         }
 
         // Constructor.
