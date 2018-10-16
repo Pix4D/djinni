@@ -177,7 +177,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
       if (shouldConstexpr(c)){
         w.w(s"${marshal.fieldType(c.ty)} constexpr $selfName::${idCpp.const(c.ident)}")
       } else {
-        w.w(s"${marshal.fieldType(c.ty)} const $selfName::${idCpp.const(c.ident)} = ")
+        w.w(s"PROJECT_EXPORT ${marshal.fieldType(c.ty)} const $selfName::${idCpp.const(c.ident)} = ")
         writeCppConst(w, c.ty, c.value)
       }
       w.wl(";")
