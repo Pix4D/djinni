@@ -98,6 +98,7 @@ class ObjcGenerator(spec: Spec) extends BaseObjcGenerator(spec) {
     writeObjcFile(marshal.headerName(ident), origin, refs.header, w => {
       for (c <- i.consts if marshal.canBeConstVariable(c)) {
         writeDoc(w, c.doc)
+        w.wl("__attribute__((visibility (\"default\")))")
         w.w(s"extern ")
         writeObjcConstVariableDecl(w, c, self)
         w.wl(s";")
@@ -200,6 +201,7 @@ class ObjcGenerator(spec: Spec) extends BaseObjcGenerator(spec) {
         w.wl
         for (c <- r.consts if marshal.canBeConstVariable(c)) {
           writeDoc(w, c.doc)
+          w.wl("__attribute__((visibility (\"default\")))")
           w.w(s"extern ")
           writeObjcConstVariableDecl(w, c, noBaseSelf);
           w.wl(s";")
