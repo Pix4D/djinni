@@ -188,6 +188,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
     val refs = new CppRefs(ident.name)
     r.fields.foreach(f => refs.find(f.ty, false))
     r.consts.foreach(c => refs.find(c.ty, false))
+    refs.hpp.add("#include \"CaptureSDKConfig.h\"  // needed for PROJECT_EXPORT")
     refs.hpp.add("#include <utility>") // Add for std::move
 
     val self = marshal.typename(ident, r)
