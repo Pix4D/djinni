@@ -96,6 +96,7 @@ class ObjcppGenerator(spec: Spec) extends BaseObjcGenerator(spec) {
     writeObjcFile(objcppMarshal.privateHeaderName(ident.name), origin, refs.privHeader, w => {
       arcAssert(w)
       w.wl
+      w.wl("__attribute__((visibility (\"default\")))")
       w.wl((if(i.ext.objc) "@protocol " else "@class ") + self + ";")
       w.wl
       wrapNamespace(w, spec.objcppNamespace, w => {
@@ -149,6 +150,7 @@ class ObjcppGenerator(spec: Spec) extends BaseObjcGenerator(spec) {
 
       if (i.ext.cpp) {
         w.wl
+        w.wl("__attribute__((visibility (\"default\")))")
         if (i.ext.objc)
           w.wl(s"@interface $objcSelf : NSObject<$self>")
         else
