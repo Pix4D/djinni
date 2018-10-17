@@ -96,7 +96,6 @@ class ObjcppGenerator(spec: Spec) extends BaseObjcGenerator(spec) {
     writeObjcFile(objcppMarshal.privateHeaderName(ident.name), origin, refs.privHeader, w => {
       arcAssert(w)
       w.wl
-      w.wl("__attribute__((visibility (\"default\")))")
       w.wl((if(i.ext.objc) "@protocol " else "@class ") + self + ";")
       w.wl
       wrapNamespace(w, spec.objcppNamespace, w => {
