@@ -330,6 +330,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
     writeHppFile(ident, origin, refs.hpp, refs.hppFwds, w => {
       writeDoc(w, doc)
       writeCppTypeParams(w, typeParams)
+      w.wl("#include \"djinni_common.hpp\"  // needed for PROJECT_EXPORT")
       w.w(s"class PROJECT_EXPORT $self").bracedSemi {
         w.wlOutdent("public:")
         // Destructor
