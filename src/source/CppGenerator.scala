@@ -59,6 +59,7 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
     val refs = new CppRefs(ident.name)
     val self = marshal.typename(ident, e)
 
+    refs.hpp.add("#include \"djinni_common.hpp\"  // needed for PROJECT_EXPORT")
     if (spec.cppEnumHashWorkaround) {
       refs.hpp.add("#include <functional>") // needed for std::hash
     }
