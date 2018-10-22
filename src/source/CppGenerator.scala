@@ -324,13 +324,14 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
       refs.find(c.ty, true)
     })
 
+    refs.hpp.add("#include \"djinni_common.hpp\"  // needed for PROJECT_EXPORT")
+
     val self = marshal.typename(ident, i)
     val methodNamesInScope = i.methods.map(m => idCpp.method(m.ident))
 
     writeHppFile(ident, origin, refs.hpp, refs.hppFwds, w => {
       writeDoc(w, doc)
       writeCppTypeParams(w, typeParams)
-      w.wl("#include \"djinni_common.hpp\"  // needed for PROJECT_EXPORT")
       w.w(s"class PROJECT_EXPORT $self").bracedSemi {
         w.wlOutdent("public:")
         // Destructor
