@@ -378,6 +378,7 @@
 		B5F06AA21D4987EF005BE736 /* DBEnumUsageRecord.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DBEnumUsageRecord.mm; sourceTree = "<group>"; };
 		B5F06AA31D4987EF005BE736 /* DBEnumUsageRecord+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBEnumUsageRecord+Private.h"; sourceTree = "<group>"; };
 		B5F06AA41D4987EF005BE736 /* DBEnumUsageRecord+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "DBEnumUsageRecord+Private.mm"; sourceTree = "<group>"; };
+		CC1E047621B192E6004457CB /* project_export.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = project_export.hpp; sourceTree = "<group>"; };
 		CF5673881BE05D1E006330E7 /* DBRecordWithFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRecordWithFlags.h; sourceTree = "<group>"; };
 		CF5673891BE05D1E006330E7 /* DBRecordWithFlags.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DBRecordWithFlags.mm; sourceTree = "<group>"; };
 		CF56738A1BE05D1E006330E7 /* DBRecordWithFlags+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBRecordWithFlags+Private.h"; sourceTree = "<group>"; };
@@ -469,6 +470,7 @@
 		6536CD6919A6C82200DD7715 /* support-lib */ = {
 			isa = PBXGroup;
 			children = (
+				CC1E047621B192E6004457CB /* project_export.hpp */,
 				CC1E047521B19206004457CB /* objc */,
 			);
 			name = "support-lib";
