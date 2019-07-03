@@ -33,7 +33,7 @@
 #    else
 #        if __GNUC__ >= 4
 #            define PROJECT_EXPORT __attribute__((visibility("default")))
-#            define PROJECT_LOCAL__attribute__ ((visibility("hidden")))
+#            define PROJECT_LOCAL __attribute__ ((visibility("hidden")))
 #        else
 #            define PROJECT_EXPORT
 #            define PROJECT_LOCAL
